@@ -1,12 +1,13 @@
-#include "DownloadProgress.h"
+#include "common.h"
 #include <QtWidgets/QApplication>
 
 
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	DownloadProgress w;
-	w.show();
+
+	DownloaderGUI gui;
+	gui.show();
 
 	return a.exec();
 }
