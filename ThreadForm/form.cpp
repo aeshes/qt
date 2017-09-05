@@ -14,6 +14,11 @@ ThreadForm::ThreadForm(QWidget *parent)
 	threadA.setMessage("A");
 	threadB.setMessage("B");
 
+	initGUI();
+}
+
+void ThreadForm::initGUI()
+{
 	threadAButton = new QPushButton(tr("Start A"), this);
 	threadBButton = new QPushButton(tr("Start B"), this);
 	quitButton = new QPushButton(tr("Quit"), this);
