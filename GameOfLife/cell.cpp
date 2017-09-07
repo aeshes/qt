@@ -21,6 +21,18 @@ bool Cell::isAlive()
 	return alive;
 }
 
+void Cell::setAlive()
+{
+	alive = true;
+	changeColor();
+}
+
+void Cell::setDead()
+{
+	alive = false;
+	changeColor();
+}
+
 void Cell::inverseState()
 {
 	alive = !alive;

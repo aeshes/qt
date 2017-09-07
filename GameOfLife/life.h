@@ -12,6 +12,8 @@ public:
 	explicit Cell(const QRectF& rect);
 	bool isAlive();
 	void inverseState();
+	void setAlive();
+	void setDead();
 
 private:
 	bool alive;
@@ -25,8 +27,13 @@ class Universe : public QGraphicsScene
 public:
 	explicit Universe(QObject *parent = 0);
 
+public slots:
+	void nextGeneration();
+
 private:
-	QVector<QVector<Cell *>> universe;
+	QVector<QVector<Cell *>> cells;
 	void createUniverse();
 	void showUniverse();
+	void getNeighbours(int x, int y, QVector<Cell *> & neighbours);
+	int countAliveNeighbours(int x, int y);
 };
