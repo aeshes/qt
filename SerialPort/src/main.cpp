@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
 
 	Model model;
 	model.showPorts();
+	model.setName("COM3");
+	model.connectToPort();
 
 	return a.exec();
 }

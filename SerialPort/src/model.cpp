@@ -27,7 +27,24 @@ void Model::showPorts()
 
 void Model::connectToPort()
 {
+	serial.setPortName(portSettings.name);
+	if (serial.open(QIODevice::ReadWrite))
+	{
+		if (setPortSettings())
+		{
+			if (serial.isOpen()) qDebug() << "Port " << portSettings.name << " is opened";
+		}
+		else serial.close();
+	}
+}
 
+bool Model::setPortSettings()
+{
+	return serial.setBaudRate(portSettings.baudRate)
+		&& serial.setDataBits(portSettings.dataBits)
+		&& serial.setParity(portSettings.parity)
+		&& serial.setStopBits(portSettings.stopBits)
+		&& serial.setFlowControl(portSettings.flowControl);
 }
 
 void Model::defaultSettings()

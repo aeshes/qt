@@ -31,9 +31,11 @@ public:
 private:
 	void searchSerialPorts();
 	void defaultSettings();
+	bool setPortSettings();
 
 	QList<QString> portList;
 	Settings portSettings;
+	QSerialPort serial;
 };
 
 #endif
