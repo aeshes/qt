@@ -34,7 +34,16 @@ void Model::connectToPort()
 		{
 			if (serial.isOpen()) qDebug() << "Port " << portSettings.name << " is opened";
 		}
-		else serial.close();
+		else disconnect();
+	}
+}
+
+void Model::disconnect()
+{
+	if (serial.isOpen())
+	{
+		serial.close();
+		qDebug() << "Port " << portSettings.name << " closed";
 	}
 }
 

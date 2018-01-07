@@ -27,6 +27,7 @@ public:
 	void setParity(int parity);
 	void setStopBits(int stopBits);
 	void setFlowControl(int flowControl);
+	void disconnect();
 
 private:
 	void searchSerialPorts();
