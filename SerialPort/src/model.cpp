@@ -25,7 +25,24 @@ void Model::showPorts()
 	}
 }
 
-void Model::connectToPort()
+QByteArray Model::read()
+{
+	if (serial.isOpen())
+	{
+		return serial.readAll();
+	}
+	return QByteArray();
+}
+
+void Model::write(const QByteArray & data)
+{
+	if (serial.isOpen())
+	{
+		serial.write(data);
+	}
+}
+
+void Model::connect()
 {
 	serial.setPortName(portSettings.name);
 	if (serial.open(QIODevice::ReadWrite))
@@ -64,6 +81,11 @@ void Model::defaultSettings()
 	setParity(QSerialPort::NoParity);
 	setStopBits(QSerialPort::OneStop);
 	setFlowControl(QSerialPort::NoFlowControl);
+}
+
+QList<QString> Model::getAvailablePorts()
+{
+	return portList;
 }
 
 void Model::setName(const QString & portName)

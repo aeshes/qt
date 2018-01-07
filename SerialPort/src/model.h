@@ -3,7 +3,11 @@
 
 #include <QList>
 #include <QString>
+#include <QByteArray>
+#include <QList>
+
 #include <QSerialPort>
+
 
 struct Settings
 {
@@ -20,14 +24,20 @@ class Model
 public:
 	Model();
 	void showPorts();
-	void connectToPort();
+	void connect();
+	void disconnect();
+
 	void setName(const QString& portName);
 	void setBaudRate(qint32 baudrate);
 	void setDataBits(int dataBits);
 	void setParity(int parity);
 	void setStopBits(int stopBits);
 	void setFlowControl(int flowControl);
-	void disconnect();
+
+	QList<QString> getAvailablePorts();
+
+	QByteArray read();
+	void write(const QByteArray & data);
 
 private:
 	void searchSerialPorts();
